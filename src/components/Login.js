@@ -2,11 +2,13 @@ import Header from "./Header";
 import { BACKGROUND_URL } from "../utils/constants";
 import { useState, useRef } from "react";
 import { checkValidData } from "../utils/validate";
-import {createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../utils/firebase";
+import { createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState();
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -28,12 +30,16 @@ const Login = () => {
 
     if (!isSignInForm) {
       //Means SignUp PAge
-      createUserWithEmailAndPassword(auth,email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user);
-          // ...
+          //   console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -43,12 +49,30 @@ const Login = () => {
         });
     } else {
       //Means Sign In Form
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+        //   console.log(user);
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + errorMessage);
+        });
     }
   };
 
   return (
     <div>
       <Header />
+
       <div className="absolute">
         <img src={BACKGROUND_URL} alt="Background" />
       </div>
