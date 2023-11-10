@@ -6,7 +6,7 @@ import { BACKGROUND_URL } from '../utils/constants';
 const GptSearch = () => {
   return (
     <div>
-      <div className="absolute -z-20">
+      <div className="fixed -z-20">
         <img src={BACKGROUND_URL} alt="Background" />
       </div>
       <GptSearchBar />
