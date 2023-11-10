@@ -67,7 +67,7 @@ const Header = () => {
       {user && (
         <div className="flex p-2">
         {showGptSearch && 
-          (  <select className="py-2 px-4 m-2 bg-green-800 rounded-md text-white" onChange={handleLanguageChange}>
+          (  <select className="py-2 px-4 m-2 bg-green-800 rounded-md text-white hover:bg-green-600" onChange={handleLanguageChange}>
             {SUPPORTING_LANGUAGES.map((lang) => 
               <option
                 className="bg-green-950" 
@@ -80,7 +80,7 @@ const Header = () => {
          }
 
           <button 
-            className="px-2 m-2 py-2 bg-purple-800 text-white rounded-md mr-2"
+            className="px-2 m-2 py-2 bg-purple-800 hover:bg-purple-600 text-white rounded-md mr-2"
             onClick={handleGptSearchClick} 
              >
              {showGptSearch ? "Home Page" : "Launch GPT"}
@@ -89,7 +89,7 @@ const Header = () => {
           {/* <img className="w-10 h-10  " src={user?.photoURl} alt="usericon" /> */}
           <button
             onClick={handleSignOut}
-            className="px-4 m-2 py-2 text-white bg-red-700 rounded-md"
+            className="px-4 m-2 py-2 text-white bg-red-700 hover:bg-red-600 rounded-md"
           >
             Sign Out
           </button>
