@@ -1,9 +1,9 @@
-# NetflixGPT
+# 🚀NetflixGPT🚀
 
 Build a Netflix clone that mirrors the interface and functionalities of the popular streaming platform using ReactJS, TailwindCSS, and OpenAI's GPT API for personalized content suggestions and an immersive user experience.
 
 ## Live Link
-https://launchnetflixgpt.netlify.app/
+NetflixGPT :- https://launchnetflixgpt.netlify.app/
 
 ## Setup and Running the Application
 To set up and run this application, please follow these steps:
